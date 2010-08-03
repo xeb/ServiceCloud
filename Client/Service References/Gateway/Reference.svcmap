@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="04167c7f-8167-4bab-bb73-d81923569317" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8731/Design_Time_Addresses/ServiceCloud/Gateway/" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="ddd00491-2a3a-4ada-bf17-489f2e4bee2b" SourceId="1" SourceUrl="http://localhost:8731/Design_Time_Addresses/ServiceCloud/Gateway/?disco" />
+    <MetadataFile FileName="item4.xsd" MetadataType="Schema" ID="f927970e-41d0-44fe-b309-04a3111b0fe9" SourceId="1" SourceUrl="http://localhost:8731/Design_Time_Addresses/ServiceCloud/Gateway/?xsd=xsd1" />
+    <MetadataFile FileName="Gateway.wsdl" MetadataType="Wsdl" ID="8915ffde-4a13-4280-9e03-31f45fa5ef57" SourceId="1" SourceUrl="http://localhost:8731/Design_Time_Addresses/ServiceCloud/Gateway/?wsdl" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="0d8ed376-7c19-4560-949f-50f0915d48f7" SourceId="1" SourceUrl="http://localhost:8731/Design_Time_Addresses/ServiceCloud/Gateway/?xsd=xsd0" />
+    <MetadataFile FileName="item6.xsd" MetadataType="Schema" ID="dd2195a1-103f-4e58-8e62-3dc96499c590" SourceId="1" SourceUrl="http://localhost:8731/Design_Time_Addresses/ServiceCloud/Gateway/?xsd=xsd3" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="99f1e745-1ee3-411f-aabd-b853656d78a3" SourceId="1" SourceUrl="http://localhost:8731/Design_Time_Addresses/ServiceCloud/Gateway/?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

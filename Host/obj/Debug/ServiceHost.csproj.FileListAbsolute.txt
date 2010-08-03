@@ -1,0 +1,6 @@
+C:\Projects\Personal\ServiceCloud\Host\bin\Debug\ServiceCloud.exe.config
+C:\Projects\Personal\ServiceCloud\Host\obj\Debug\ServiceCloud.exe
+C:\Projects\Personal\ServiceCloud\Host\obj\Debug\ServiceCloud.pdb
+C:\Projects\Personal\ServiceCloud\Host\bin\Debug\ServiceCloud.exe
+C:\Projects\Personal\ServiceCloud\Host\bin\Debug\ServiceCloud.pdb
+C:\Projects\Personal\ServiceCloud\Host\obj\Debug\ResolveAssemblyReference.cache
