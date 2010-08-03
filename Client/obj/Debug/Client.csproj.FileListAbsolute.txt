@@ -1,6 +1,0 @@
-C:\Projects\Personal\ServiceCloud\Client\bin\Debug\Client.exe
-C:\Projects\Personal\ServiceCloud\Client\bin\Debug\Client.pdb
-C:\Projects\Personal\ServiceCloud\Client\obj\Debug\ResolveAssemblyReference.cache
-C:\Projects\Personal\ServiceCloud\Client\obj\Debug\Client.exe
-C:\Projects\Personal\ServiceCloud\Client\obj\Debug\Client.pdb
-C:\Projects\Personal\ServiceCloud\Client\bin\Debug\Client.exe.config
