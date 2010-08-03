@@ -1,17 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.ServiceModel;
 
 namespace Kockerbeck.ServiceCloud
 {
-	[ServiceContract]
-	public interface IGateway
-	{
-		[OperationContract]
-		Response Execute(Request request);
-	}
-
 	[DataContract]
 	public class Request
 	{
