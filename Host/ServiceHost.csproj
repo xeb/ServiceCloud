@@ -59,7 +59,6 @@
     <Compile Include="ICloudService.cs" />
     <Compile Include="Services\Decrementer.cs" />
     <Compile Include="Gateway.cs" />
-    <Compile Include="Host.cs" />
     <Compile Include="Services\IDecrementer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
