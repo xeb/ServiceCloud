@@ -25,11 +25,11 @@ namespace Kockerbeck.ServiceCloud.Client
 					Argument = 15,
 					Services = new[]
 					{
-						services[0], // Decrement
-						services[0], // Decrement
-						services[0], // Decrement
-						services[1], // Increment
-						services[1], // Increment
+					    services[0], // Decrement
+					    services[0], // Decrement
+					    services[0], // Decrement
+					    services[1], // Increment
+					    services[1], // Increment
 					},
 				});
 
@@ -48,8 +48,10 @@ namespace Kockerbeck.ServiceCloud.Client
 					response.ServicesRan.ToList().ForEach(s => Console.WriteLine("Ran on Service: {0}", s));
 				}
 
-				Console.ReadLine();
+				cloud.Close();
 			}
+
+			Console.ReadLine();
 		}
 	}
 }

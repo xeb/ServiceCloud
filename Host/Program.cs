@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 
 namespace Kockerbeck.ServiceCloud
 {
@@ -11,7 +12,7 @@ namespace Kockerbeck.ServiceCloud
 		/// </summary>
 		static void Main()
 		{
-			var hosts = new List<Host>();
+			var hosts = new List<ServiceHost>();
 			var services = Gateway.GetCloudServices();
 			foreach (var cloudServiceType in services)
 			{
@@ -20,7 +21,7 @@ namespace Kockerbeck.ServiceCloud
 				Console.WriteLine("Starting {0}...", cloudServiceType.Name);
 
 				// Add to the Hosts collection
-				hosts.Add(new Host(cloudServiceType));
+				hosts.Add(new ServiceHost(cloudServiceType));
 			}
 
 			// Start each Host
