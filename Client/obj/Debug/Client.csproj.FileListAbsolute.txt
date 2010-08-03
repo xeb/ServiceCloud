@@ -1,0 +1,6 @@
+C:\Projects\Personal\ServiceCloud\Client\obj\Debug\ResolveAssemblyReference.cache
+C:\Projects\Personal\ServiceCloud\Client\bin\Debug\Kockerbeck.ServiceCloud.Client.exe.config
+C:\Projects\Personal\ServiceCloud\Client\bin\Debug\Kockerbeck.ServiceCloud.Client.exe
+C:\Projects\Personal\ServiceCloud\Client\bin\Debug\Kockerbeck.ServiceCloud.Client.pdb
+C:\Projects\Personal\ServiceCloud\Client\obj\Debug\Kockerbeck.ServiceCloud.Client.exe
+C:\Projects\Personal\ServiceCloud\Client\obj\Debug\Kockerbeck.ServiceCloud.Client.pdb

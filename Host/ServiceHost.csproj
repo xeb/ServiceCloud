@@ -8,8 +8,8 @@
     <ProjectGuid>{AA0A6BE7-65BC-4424-BA0B-900AF41748C0}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ServiceCloud</RootNamespace>
-    <AssemblyName>ServiceCloud</AssemblyName>
+    <RootNamespace>Kockerbeck.ServiceCloud</RootNamespace>
+    <AssemblyName>Kockerbeck.ServiceCloud</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

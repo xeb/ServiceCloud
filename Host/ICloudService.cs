@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Linq;
+using System.ServiceModel;
 
-namespace ServiceCloud
+namespace Kockerbeck.ServiceCloud
 {
+	[ServiceContract]
 	public interface ICloudService
 	{
-		void Execute(Request request);
+		[OperationContract]
+		Response Execute(Request request);
 	}
 }

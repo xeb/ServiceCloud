@@ -2,10 +2,10 @@
 using System.Linq;
 using System.ServiceModel;
 
-namespace ServiceCloud.Services
+namespace Kockerbeck.ServiceCloud.Services
 {
 	[ServiceContract]
-	public interface IDecrementer
+	public interface IDecrementer : ICloudService
 	{
 		[OperationContract]
 		int Decrement(int i);

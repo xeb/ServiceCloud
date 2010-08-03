@@ -8,17 +8,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Client.Gateway {
+namespace Kockerbeck.ServiceCloud.Client.Gateway {
     using System.Runtime.Serialization;
     using System;
     
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Request", Namespace="http://schemas.datacontract.org/2004/07/ServiceCloud")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Request", Namespace="http://schemas.datacontract.org/2004/07/Kockerbeck.ServiceCloud")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(string[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Client.Gateway.Response))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Kockerbeck.ServiceCloud.Client.Gateway.ServiceCall[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Kockerbeck.ServiceCloud.Client.Gateway.ServiceCall))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Kockerbeck.ServiceCloud.Client.Gateway.Response))]
     public partial class Request : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -28,7 +30,7 @@ namespace Client.Gateway {
         private object ArgumentField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string[] ServicesField;
+        private Kockerbeck.ServiceCloud.Client.Gateway.ServiceCall[] ServicesField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -54,7 +56,7 @@ namespace Client.Gateway {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string[] Services {
+        public Kockerbeck.ServiceCloud.Client.Gateway.ServiceCall[] Services {
             get {
                 return this.ServicesField;
             }
@@ -78,10 +80,73 @@ namespace Client.Gateway {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Response", Namespace="http://schemas.datacontract.org/2004/07/ServiceCloud")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ServiceCall", Namespace="http://schemas.datacontract.org/2004/07/Kockerbeck.ServiceCloud")]
+    [System.SerializableAttribute()]
+    public partial class ServiceCall : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AddressField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Address {
+            get {
+                return this.AddressField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AddressField, value) != true)) {
+                    this.AddressField = value;
+                    this.RaisePropertyChanged("Address");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "3.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Response", Namespace="http://schemas.datacontract.org/2004/07/Kockerbeck.ServiceCloud")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(string[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Client.Gateway.Request))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Kockerbeck.ServiceCloud.Client.Gateway.Request))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Kockerbeck.ServiceCloud.Client.Gateway.ServiceCall[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Kockerbeck.ServiceCloud.Client.Gateway.ServiceCall))]
     public partial class Response : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -140,41 +205,41 @@ namespace Client.Gateway {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Gateway.IGateway")]
-    public interface IGateway {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Gateway.ICloudService")]
+    public interface ICloudService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGateway/Execute", ReplyAction="http://tempuri.org/IGateway/ExecuteResponse")]
-        Client.Gateway.Response Execute(Client.Gateway.Request request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICloudService/Execute", ReplyAction="http://tempuri.org/ICloudService/ExecuteResponse")]
+        Kockerbeck.ServiceCloud.Client.Gateway.Response Execute(Kockerbeck.ServiceCloud.Client.Gateway.Request request);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
-    public interface IGatewayChannel : Client.Gateway.IGateway, System.ServiceModel.IClientChannel {
+    public interface ICloudServiceChannel : Kockerbeck.ServiceCloud.Client.Gateway.ICloudService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "3.0.0.0")]
-    public partial class GatewayClient : System.ServiceModel.ClientBase<Client.Gateway.IGateway>, Client.Gateway.IGateway {
+    public partial class CloudServiceClient : System.ServiceModel.ClientBase<Kockerbeck.ServiceCloud.Client.Gateway.ICloudService>, Kockerbeck.ServiceCloud.Client.Gateway.ICloudService {
         
-        public GatewayClient() {
+        public CloudServiceClient() {
         }
         
-        public GatewayClient(string endpointConfigurationName) : 
+        public CloudServiceClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public GatewayClient(string endpointConfigurationName, string remoteAddress) : 
+        public CloudServiceClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public GatewayClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public CloudServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public GatewayClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public CloudServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
-        public Client.Gateway.Response Execute(Client.Gateway.Request request) {
+        public Kockerbeck.ServiceCloud.Client.Gateway.Response Execute(Kockerbeck.ServiceCloud.Client.Gateway.Request request) {
             return base.Channel.Execute(request);
         }
     }

@@ -3,7 +3,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 
-namespace ServiceCloud
+namespace Kockerbeck.ServiceCloud
 {
 	[ServiceContract]
 	public interface IGateway
@@ -16,7 +16,7 @@ namespace ServiceCloud
 	public class Request
 	{
 		[DataMember]
-		public string[] Services { get; set; }
+		public ServiceCall[] Services { get; set; }
 
 		[DataMember]
 		public object Argument { get; set; }
@@ -30,5 +30,15 @@ namespace ServiceCloud
 
 		[DataMember]
 		public string[] ServicesRan { get; set; }
+	}
+
+	[DataContract]
+	public class ServiceCall
+	{
+		[DataMember]
+		public string Address { get; set; }
+
+		[DataMember]
+		public string Name { get; set; }
 	}
 }

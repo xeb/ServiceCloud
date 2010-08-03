@@ -1,50 +1,77 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using ServiceCloud.Extensions;
+using System.ServiceModel;
+using Kockerbeck.ServiceCloud.Extensions;
 
-namespace ServiceCloud
+namespace Kockerbeck.ServiceCloud
 {
-	public class Gateway : IGateway
+	public class Gateway : ICloudService
 	{
 		public Response Execute(Request request)
 		{
-			var response = new Response();
-			
+			if (request == null) throw new FaultException("Request is NULL");
+
 			var servicesFound = new List<string>();
 
+			// Go through each service
 			foreach (var service in request.Services)
 			{
-				Console.WriteLine(String.Format(" \t Request to call service {0}", service));
+				Console.WriteLine(String.Format(" \t Request to call service {0}", service.Name));
 
-				var serviceType = GetCloudServices().SingleOrDefault(s => String.Equals(s.Name, service));
-
-				Console.WriteLine(String.Format(" \t Type is: {0}", serviceType == null ? "UNKNOWN" : serviceType.FullName));
-
-				if(serviceType != null)
+				// Find the Service Interface Type
+				var serviceType = GetCloudServices().SingleOrDefault(s => s.IsInterface && String.Equals(s.Name, String.Format("I{0}", service.Name)));
+				if(serviceType == null)
 				{
-					var cloudServiceInstance = Activator.CreateInstance(serviceType) as ICloudService;
-					if(cloudServiceInstance == null)
+					Console.WriteLine("\t Type is UNKNOWN for {0}", service.Name);
+					continue;
+				}
+				
+				Console.WriteLine(String.Format(" \t Type is: {0}", serviceType.FullName));
+
+				// Intiatialize a ChannelFactory
+				using (var channelFactory = new ChannelFactory<ICloudService>(new WSHttpBinding(), new EndpointAddress(service.Address)))
+				{
+					channelFactory.Open();
+
+					Console.WriteLine("Calling Service {0} at Address {1}", service.Name, service.Address);
+
+					try
 					{
-						Console.WriteLine("EXCEPTION: Cannot create instance of {0}", serviceType.FullName);
-						continue;
+						// Create the Channel & Execute the Response
+						var response = channelFactory.CreateChannel().Execute(request);
+
+						// Replace the Original Request Argument
+						request.Argument = response.ReturnObject;
+
+						// Add the Service to the ServicesFound collection
+						servicesFound.Add(serviceType.FullName);
+					}
+					catch (Exception ex)
+					{
+						Console.WriteLine("EXCEPTION - {0}", ex.Message);
 					}
 
-					cloudServiceInstance.Execute(request);
-					servicesFound.Add(serviceType.FullName);
+					channelFactory.Close();
 				}
 			}
 
-			// Assign the ReturnObject as the object that the last service touched
-			response.ReturnObject = request.Argument; 
+			return new Response
+			{
+				// Assign the ReturnObject as the object that the last service touched
+				ReturnObject = request.Argument,
 
-			// Add the Array of Services that were run & their order
-			response.ServicesRan = servicesFound.ToArray();
-
-			return response;
+				// Add the Array of Services that were run & their order
+				ServicesRan = servicesFound.ToArray(),
+			};
 		}
 
 		private static List<Type> _cloudServices;
+
+		/// <summary>
+		/// Get all ICloudService implementations
+		/// </summary>
+		/// <returns></returns>
 		public static List<Type> GetCloudServices()
 		{
 			if (_cloudServices != null) return _cloudServices;

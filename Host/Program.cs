@@ -1,31 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using ServiceCloud.Extensions;
 
-namespace ServiceCloud
+namespace Kockerbeck.ServiceCloud
 {
-	class Program
+	public class Program
 	{
+		/// <summary>
+		/// Main Execution 
+		/// </summary>
 		static void Main()
 		{
-			List<Host> hosts = new List<Host>
+			var hosts = new List<Host>();
+			var services = Gateway.GetCloudServices();
+			foreach (var cloudServiceType in services)
 			{
-				new Host(typeof (Gateway)) // Add the Gateway service by default
-			};
+				if (cloudServiceType.IsInterface) continue; // Skip the interfaces
 
-			foreach (var cloudServiceType in Gateway.GetCloudServices())
-			{
 				Console.WriteLine("Starting {0}...", cloudServiceType.Name);
+
+				// Add to the Hosts collection
 				hosts.Add(new Host(cloudServiceType));
 			}
 
+			// Start each Host
 			hosts.ForEach(h => h.Open());
 			
 			Console.WriteLine("Listening...");
 			Console.WriteLine("[Hit Enter to Exit]");
 			Console.ReadLine();
 
+			// Close each Host
 			hosts.ForEach(h => h.Close());
 		}
 	}

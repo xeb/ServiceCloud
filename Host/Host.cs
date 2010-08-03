@@ -3,7 +3,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.ServiceModel.Description;
 
-namespace ServiceCloud
+namespace Kockerbeck.ServiceCloud
 {
 	/// <summary>
 	/// The default Service Host

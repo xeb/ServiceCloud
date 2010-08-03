@@ -8,8 +8,8 @@
     <ProjectGuid>{3072B5DF-3799-4B1B-87F4-CF33C4EAD228}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Client</RootNamespace>
-    <AssemblyName>Client</AssemblyName>
+    <RootNamespace>Kockerbeck.ServiceCloud.Client</RootNamespace>
+    <AssemblyName>Kockerbeck.ServiceCloud.Client</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -64,17 +64,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Service References\Gateway\Gateway.wsdl" />
-    <None Include="Service References\Gateway\item2.xsd" />
-    <None Include="Service References\Gateway\item3.xsd" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\Gateway\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\Gateway\Gateway.wsdl" />
     <None Include="Service References\Gateway\item.disco" />
-    <None Include="Service References\Gateway\item4.xsd" />
-    <None Include="Service References\Gateway\item6.xsd" />
+    <None Include="Service References\Gateway\item.xsd" />
+    <None Include="Service References\Gateway\item1.xsd" />
+    <None Include="Service References\Gateway\item2.xsd" />
+    <None Include="Service References\Gateway\item3.xsd" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\Gateway\configuration91.svcinfo" />
@@ -83,7 +83,7 @@
     <None Include="Service References\Gateway\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\Gateway\Client.Gateway.Response.datasource">
+    <None Include="Service References\Gateway\Kockerbeck.ServiceCloud.Client.Gateway.Response.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\Gateway\Reference.svcmap">

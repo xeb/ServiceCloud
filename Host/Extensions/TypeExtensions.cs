@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace ServiceCloud.Extensions
+namespace Kockerbeck.ServiceCloud.Extensions
 {
 	public static class TypeExtensions
 	{
