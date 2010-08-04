@@ -17,43 +17,7 @@ namespace Kockerbeck.ServiceCloud
 			// Go through each service
 			foreach (var service in request.Services)
 			{
-				Console.WriteLine(String.Format(" \t Request to call service {0}", service.Name));
-
-				// Find the Service Interface Type
-				var serviceType = GetCloudServices().SingleOrDefault(s => s.IsInterface && String.Equals(s.Name, String.Format("I{0}", service.Name)));
-				if(serviceType == null)
-				{
-					Console.WriteLine("\t Type is UNKNOWN for {0}", service.Name);
-					continue;
-				}
-				
-				Console.WriteLine(String.Format(" \t Type is: {0}", serviceType.FullName));
-
-				// Intiatialize a ChannelFactory
-				using (var channelFactory = new ChannelFactory<ICloudService>(new WSHttpBinding(), new EndpointAddress(service.Address)))
-				{
-					channelFactory.Open();
-
-					Console.WriteLine("Calling Service {0} at Address {1}", service.Name, service.Address);
-
-					try
-					{
-						// Create the Channel & Execute the Response
-						var response = channelFactory.CreateChannel().Execute(request);
-
-						// Replace the Original Request Argument
-						request.Argument = response.ReturnObject;
-
-						// Add the Service to the ServicesFound collection
-						servicesFound.Add(serviceType.FullName);
-					}
-					catch (Exception ex)
-					{
-						Console.WriteLine("EXCEPTION - {0}", ex.Message);
-					}
-
-					channelFactory.Close();
-				}
+				CallService(service, request, servicesFound);
 			}
 
 			return new Response
@@ -64,6 +28,54 @@ namespace Kockerbeck.ServiceCloud
 				// Add the Array of Services that were run & their order
 				ServicesRan = servicesFound.ToArray(),
 			};
+		}
+
+		private static void CallService(ServiceCall service, Request request, ICollection<string> servicesFound)
+		{
+			Console.WriteLine(String.Format(" \t Request to call service {0}", service.Name));
+
+			// Find the Service Interface Type
+			var serviceType = GetCloudServices().SingleOrDefault(s => s.IsInterface && String.Equals(s.Name, String.Format("I{0}", service.Name)));
+			if (serviceType == null)
+			{
+				Console.WriteLine("\t Type is UNKNOWN for {0}", service.Name);
+				return;
+			}
+
+			Console.WriteLine(String.Format("\t Type is: {0}", serviceType.FullName));
+
+			// Intiatialize a ChannelFactory
+			using (var channelFactory = new ChannelFactory<ICloudService>(new WSHttpBinding(), new EndpointAddress(service.Address)))
+			//using (var channelFactory = new ChannelFactory<ICloudService>(new WSHttpBinding()))
+			{
+				channelFactory.Open();
+
+				Console.WriteLine("Calling Service {0} at Address {1}", service.Name, service.Address);
+
+				try
+				{
+					// Create the Channel & Execute the Response
+					var response = channelFactory.CreateChannel().Execute(request);
+
+					// Replace the Original Request Argument
+					request.Argument = response.ReturnObject;
+
+					// Add the Service to the ServicesFound collection
+					servicesFound.Add(serviceType.FullName);
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine("EXCEPTION - {0}", ex.Message);
+				}
+
+				channelFactory.Close();
+			}
+
+			// Recursively Call any other services
+			if(service.Services != null && service.Services.Length > 0)
+			{
+				service.Services.ToList().ForEach(s => CallService(s, request, servicesFound));
+			}
 		}
 
 		private static List<Type> _cloudServices;

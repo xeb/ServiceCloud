@@ -32,5 +32,8 @@ namespace Kockerbeck.ServiceCloud
 
 		[DataMember]
 		public string Name { get; set; }
+
+		[DataMember]
+		public ServiceCall[] Services { get; set; }
 	}
 }

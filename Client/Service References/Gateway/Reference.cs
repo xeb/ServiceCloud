@@ -93,6 +93,9 @@ namespace Kockerbeck.ServiceCloud.Client.Gateway {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Kockerbeck.ServiceCloud.Client.Gateway.ServiceCall[] ServicesField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -125,6 +128,19 @@ namespace Kockerbeck.ServiceCloud.Client.Gateway {
                 if ((object.ReferenceEquals(this.NameField, value) != true)) {
                     this.NameField = value;
                     this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Kockerbeck.ServiceCloud.Client.Gateway.ServiceCall[] Services {
+            get {
+                return this.ServicesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ServicesField, value) != true)) {
+                    this.ServicesField = value;
+                    this.RaisePropertyChanged("Services");
                 }
             }
         }

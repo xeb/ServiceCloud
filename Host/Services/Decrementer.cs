@@ -8,7 +8,7 @@ namespace Kockerbeck.ServiceCloud.Services
 	{
 		public int Decrement(int i)
 		{
-			return i-1;
+			return i - 1;
 		}
 
 		public Response Execute(Request request)

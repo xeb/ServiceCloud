@@ -18,6 +18,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Services" nillable="true" type="tns:ArrayOfServiceCall" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ServiceCall" nillable="true" type="tns:ServiceCall" />

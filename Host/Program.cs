@@ -14,6 +14,7 @@ namespace Kockerbeck.ServiceCloud
 		{
 			var hosts = new List<ServiceHost>();
 			var services = Gateway.GetCloudServices();
+
 			foreach (var cloudServiceType in services)
 			{
 				if (cloudServiceType.IsInterface) continue; // Skip the interfaces
